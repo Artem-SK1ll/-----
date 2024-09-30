@@ -1,0 +1,560 @@
+:root{
+--black:#101217;
+--light-black:#1d1f25;
+--grey:#797e9a;
+--green:#66a663;
+--light-green:#2af599;
+---white:#fff;
+--orange:#dbac36;
+--popup-background-light: rgb(235, 233, 244);
+--popup-background-dark: #1d1f25;
+--checked-color-dark: #0DBBDD;
+--checked-color-light: #2af599;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: var(--black);
+  padding: 20px;
+}
+h1{
+  text-transform: uppercase;
+}
+header{
+  display: flex;
+  border-radius: 20px;
+  background-color:var(--light-black);
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.NameGame{
+  display: flex;
+  align-items: center;
+}
+/* Стили для темной темы */
+.HeaderUser {
+  background-color: #101217;
+  border-radius: 25px;
+  padding: 10px;
+  gap: 5px;
+}
+
+/* Стили для светлой темы */
+.light-theme .HeaderUser {
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.HeaderUser span {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+#themeToggleImg{
+  height: 80px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+#themeToggleImg:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+#themeToggleImg:hover.dark {
+  filter: drop-shadow(0 3px 4px #0DBBDD); /* Темная тема */
+}
+
+#themeToggleImg:hover.light {
+  filter: drop-shadow(0 3px 4px #2af599); /* Светлая тема */
+}
+
+#themeToggleImg:active {
+  transform: scale(1);
+}
+#exit {
+  width: 90px;
+  height: 50px;
+  animation: none;
+  transition: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 30px;
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  color: #fdfdfd;
+  font-size: 15px;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#exit:hover {
+  transform: scale(1.05); /* Увеличение на 5% */
+  filter: drop-shadow(0 0px 2px #0DBBDD); /* Темная тема */
+}
+
+#exit:active {
+  transform: scale(1); /* Возврат к изначальному размеру при нажатии */
+}
+.UserContainer{
+  display: flex;
+  gap: 10px;
+}
+.HeaderConteiner {
+  display: flex;
+  justify-content: center; /* Центрирование по вертикали */
+  align-items: center; /* Центрирование по горизонтали */
+  gap: 10px;
+}
+#userAvatar{
+  width: 45px;
+  border-radius: 50%;
+  display: none;
+}
+#sidebarUserAvatar{
+  width: 120px;
+  border-radius: 50%;
+  display: none;
+  margin-bottom: 20px;
+}
+
+
+
+main{
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap-reverse;
+}
+.gridBlocks{
+  background-color: var(--light-black);
+  padding: 20px;
+  border-radius: 20px;
+  flex-grow: 1000;
+}
+.area{
+  display: grid;
+  grid-template-columns: repeat(10,calc(0.9vw + 22px));
+  gap: 5px;
+  justify-content: center;
+}
+.cell{
+  height: calc(0.9vw + 22px);
+  width: calc(0.9vw + 22px);
+  background-color: #0DBBDD;
+  border-radius:3px;
+  text-align: center;
+  font-weight: bold;
+  line-height: calc(0.9vw + 22px);
+  font-size: calc(0.9vw + 13.2px);
+  cursor: pointer;
+}
+.cell.light {
+    background-color: #2af599;
+}
+
+.cell.dark {
+    background-color: #0DBBDD;
+}
+
+.pointsBlocks {
+  background-color: var(--light-black);
+  padding: 20px;
+  border-radius: 20px;
+  flex-grow: 1;
+  width: 250px;
+}
+h2{
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.inputBlock{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  
+}
+/* Основные стили label */
+label {
+  background-color: #101217; /* Изначальный цвет */
+  padding: 5px;
+  border-radius: 30px;
+  min-width: 100px;
+  text-align: center;
+  flex-grow: 1;
+  cursor: pointer;
+  transition: outline 0.3s, transform 0.3s; /* Плавный переход для обводки и трансформации */
+  box-sizing: border-box; /* Учитывать padding и border в размерах */
+}
+
+.light-label {
+  background-color: #fafbff;
+}
+
+.dark-label {
+  background-color: #101217;
+}
+
+label input {
+  display: none;
+}
+
+
+/* Стили для темной темы */
+body.dark-theme label:hover {
+  outline: 1px solid #0DBBDD;
+  box-shadow: 0 1px 10px #0DBBDD;
+  transform: scale(1.05); /* Увеличение на 5% */
+}
+
+/* Стили для светлой темы */
+body.light-theme label:hover {
+  outline: 1px solid #2af599;
+  box-shadow: 0 1px 10px #2af599;
+  transform: scale(1.05); /* Увеличение на 5% */
+}
+
+label:has(input:checked) {
+  background-color: var(--checked-color);
+}
+
+label:active {
+  transform: scale(1); /* Возврат к изначальному размеру при нажатии */
+}
+
+.btn {
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  color: #fdfdfd;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  height: 60px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; /* Плавный переход */
+}
+
+.btn:hover {
+  transform: scale(1.05); /* Увеличение на 5% */
+  box-shadow: 0 1px 10px #0DBBDD; /* Тень цвета #0DBBDD */
+}
+.btn:active {
+  transform: scale(1); /* Возврат к изначальному размеру при нажатии */
+}
+
+.cell.active{
+  background-color:var(--light-green);
+  background-size: contain;
+}
+.cell.passiv{
+  background-color:var(--grey);
+  background-size: contain;
+}
+.cell.flag{
+  background-image: url(./img/flag.gif);
+  background-color: var(--green);
+  background-size: contain;
+}
+.cell.bomb{
+  background-image: url(./img/bomb_1f4a3.webp);
+  background-color: var(--orange);
+  background-size: contain;
+}
+
+<<<<<<< HEAD
+section{
+  background: rgba(255, 255, 255, 0.4);
+=======
+
+section{
+  background: rgba(255, 255, 255, 0.0);
+>>>>>>> 7b8447aa2056faaac1f5fbe22898dd13cabf37c0
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+<<<<<<< HEAD
+  display: flex;
+=======
+  display: none;
+>>>>>>> 7b8447aa2056faaac1f5fbe22898dd13cabf37c0
+  justify-content: center;
+  align-items: center;
+  
+}
+<<<<<<< HEAD
+.PopUp{
+  background-color: var(--purple);
+  border: 5px solid var(---white);
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  padding: 20px 20px;
+}
+.PopUp h2 {
+  text-transform: uppercase;
+}
+.PopUp input {
+  font-size: 26px;
+  outline: none;
+  border-radius: 15px;
+  border: 0;
+  padding: 0 15px;
+  max-width: 260px;
+}
+=======
+.custom::placeholder {
+  color: #999; /* Цвет текста подсказки */
+  font-size: 20px; /* Размер шрифта */
+  text-align: center;
+}
+
+
+
+body.light-theme {
+  --popup-background: var(--popup-background-light);
+}
+
+body.dark-theme {
+  --popup-background: var(--popup-background-dark);
+}
+
+.PopUp {
+  background-color: var(--popup-background);
+  border: 2px solid transparent; /* Убедитесь, что используется прозрачный цвет */
+  border-image: linear-gradient(to right, #2af599 20%, #0DBBDD 100%) 1;
+  text-align: center;
+
+  padding: 20px;
+}
+
+
+.PopUp h3 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  
+
+}
+h4{
+  text-align: left;
+  font-weight: normal;
+  margin-bottom: 11px;
+}
+/* Стили для темной темы */
+.PopUp input {
+  font-size: 26px;
+  max-width: 260px;
+  background-color: #2d2f36;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 10px;
+  color: #fff;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* Стили для светлой темы */
+.light-theme .PopUp input {
+  font-size: 26px;
+  max-width: 260px;
+  background-color: #dbdbdb;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 10px;
+  color: #000; /* Изменяем цвет текста на черный */
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+input.error {
+  border: 2px solid red; /* Красная обводка */
+}
+.light-theme .PopUp input.error {
+  border: 2px solid red; /* Красная обводка */
+}
+
+.btn2 {
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  color: #fdfdfd;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  height: 60px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; /* Плавный переход */
+}
+.btn2:hover {
+  transform: scale(1.02); /* Увеличение на 5% */
+  box-shadow: 0 1px 10px #0DBBDD; /* Тень цвета #0DBBDD */
+}
+.btn2:active {
+  transform: scale(1); /* Возврат к изначальному размеру при нажатии */
+}
+.HeaderUser {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pointImg {
+  width: 20px;
+  height: 20px;
+}
+.spanOne{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.spanTwo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.burger-menu {
+  display: none; /* Скрыть бургер-меню по умолчанию */
+  cursor: pointer;
+}
+
+.burger-icon {
+  width: 50px;
+  height: 6px;
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  margin: 8px 0;
+  margin-right: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 30px
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Скрыть меню за пределами экрана справа */
+  width: 250px;
+  height: 100%;
+  background: #101217;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease; /* Плавный переход */
+  z-index: 1000; /* Делаем его выше других элементов */
+}
+
+.sidebar.active {
+  right: 0; 
+}
+.close {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  border: none;
+  height: 50px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fdfdfd;
+  font-weight: bold;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  cursor: pointer;
+}
+.sidebar-content {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px;
+}
+.sidebar-content span{
+  width: 100%; 
+  height: 50px; 
+  border-radius: 30px;
+  background: #1d1f25;
+  color: #fdfdfd;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  box-sizing: border-box; 
+  margin-bottom: 20px;
+  padding: 10px;
+  
+}
+
+
+
+#exit2 {
+  width: 100%; 
+  height: 50px; 
+  animation: none;
+  transition: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 30px;
+  background: linear-gradient(to right, #2af599 20%, #0DBBDD 100%);
+  color: #fdfdfd;
+  font-size: 20px;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; /* Чтобы padding не увеличивал размер */
+}
+
+
+#exit2:hover {
+  transform: scale(1.05); /* Увеличение на 5% */
+  filter: drop-shadow(0 0px 2px #0DBBDD); /* Темная тема */
+}
+
+#exit2:active {
+  transform: scale(1); /* Возврат к изначальному размеру при нажатии */
+}
+
+@media (max-width: 600px) {
+  .HeaderUser {
+    display: none; /* Скрыть HeaderUser на малых экранах */
+  }
+
+  .burger-menu {
+    display: block; /* Показать бургер-меню на малых экранах */
+  }
+}
+>>>>>>> 7b8447aa2056faaac1f5fbe22898dd13cabf37c0
